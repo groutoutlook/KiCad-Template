@@ -58,3 +58,18 @@ alias mp := move-production
 move-production:
     mv ./*zip ../Finished -Force
 
+alias glb := model-glb
+[group('prod')]
+[script]
+model-glb:
+    $pcbName = (rvpa .\*.kicad_pcb)
+    $glbName = (Split-Path $pcbName -Leaf) -replace "kicad_pcb","glb"
+    kicad-cli pcb export glb $pcbName -o ".\production\$glbName"
+
+alias png := render-png
+[group('prod')]
+[script]
+render-png:
+    $pcbName = (rvpa .\*.kicad_pcb)
+    $artifactName = (Split-Path $pcbName -Leaf) -replace "kicad_pcb","png"
+    kicad-cli pcb render $pcbName -o ".\production\$artifactName"
