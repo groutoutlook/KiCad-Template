@@ -30,3 +30,7 @@ fp-info-cache
 # Generated production files (Toolkit Plugins)
 /production/
 /pcbway_production/
+
+# zipped files.
+*.zip
+*.tar.gz

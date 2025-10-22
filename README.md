@@ -1,6 +1,7 @@
 # KiCad Template
 
-A KiCad project template with DRC rules optimized for JLCPCB/PCBWAY fabrication, automated jobset outputs, and a bundled user-defined library for symbols, footprints, and 3D models.
+KiCad project template with DRC rules optimized for JLCPCB/PCBWAY fabrication. 
+and CLI-friendly / bleeding edge people.
 
 ## Features
 
@@ -11,12 +12,17 @@ A KiCad project template with DRC rules optimized for JLCPCB/PCBWAY fabrication,
 - **Minimalistic Drawing Sheet**: Clean, simple template with essential information only
 
 ## Getting Started
-
-1. Copy or clone this template into your system or user template directory:
+0. Clone this.
+```pwsh
+git clone --recursive https://github.com/groutoutlook/KiCad-Template
+```
+1. PowerShell Copy.
+```pwsh 
+cp ./KiCad-Template ~\OneDrive\Documents\KiCad\9.99\template -Recurse -Force
+```
    
-   **Windows Directories** (Replace `9.0` with your KiCad version):
-   - System Templates: `%APPDATA%/kicad/9.0/templates`
-   - User Templates: `C:\Users\<YOUR_NAME>\Documents\KiCad\9.0\template\`
+- System Templates: `%APPDATA%/kicad/9.0/templates`
+- User Templates: `C:\Users\<YOUR_NAME>\Documents\KiCad\9.0\template\`
 
 2. Launch KiCad → **File → New Project From Template** → select `KiCad-Template`
 
