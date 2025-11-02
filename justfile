@@ -39,6 +39,18 @@ default_args := 'args here'
 [group('dev')]
 run args=default_args:
     ./*kicad*pro
+    
+alias ep := edit_pcbnew
+default_args := 'args here'
+[group('dev')]
+edit_pcbnew args=default_args:
+    pcbnew ./*kicad_pcb
+
+alias ee := edit_eeschema
+default_args := 'args here'
+[group('dev')]
+edit_eeschema args=default_args:
+    eeschema ./*kicad_sch
 
 alias d := deploy
 [group('prod'),script,no-cd]
@@ -73,3 +85,20 @@ render-png:
     $pcbName = (rvpa .\*.kicad_pcb)
     $artifactName = (Split-Path $pcbName -Leaf) -replace "kicad_pcb","png"
     kicad-cli pcb render $pcbName -o ".\production\$artifactName"
+
+alias pdf := render-pdf
+[group('prod')]
+[script]
+render-pdf:
+    $pcbName = (rvpa .\*.kicad_pcb)
+    $artifactName = (Split-Path $pcbName -Leaf) -replace "kicad_pcb","2d.pdf"
+    kicad-cli pcb export pdf $pcbName -o ".\production\$artifactName" -l 'F.Cu,B.Cu,F.Silkscreen,F.Courtyard'
+
+alias u3d := render-3dpdf
+[group('prod')]
+[script]
+render-3dpdf:
+    $pcbName = (rvpa .\*.kicad_pcb)
+    $artifactName = (Split-Path $pcbName -Leaf) -replace "kicad_pcb","3d.pdf"
+    kicad-cli pcb export 3dpdf $pcbName -o ".\production\$artifactName"
+
